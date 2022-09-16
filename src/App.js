@@ -1,12 +1,29 @@
 
 import './App.css';
 import Feed from "./components/Feed"
+import Restaurant from "./components/Restaurant.js"
+import {Switch, Route, Link} from "react-router-dom"
+import React, {useEffect, useState} from 'react';
 
 function App() {
+  const [feed, setFeed] = useState([])
+  useEffect(()=>{
+  fetch(`http://localhost:3000/restaurants`)
+  .then(res=>res.json())
+  .then(obj=>setFeed(obj))
+  },[])
+
+  
   return (
     <>
-    <h1>Hello</h1>
-    <Feed></Feed>
+    <Switch>
+      <Route exact path="/">
+        <Feed feed={feed}/>
+      </Route>
+      <Route path="/restaurant">
+          <Restaurant feed={feed}/>
+      </Route>
+    </Switch>
     </>
   )
 }

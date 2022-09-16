@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import "./css/FeedCard.css"
 import { BsHeart, BsChat, BsFillHeartFill } from "react-icons/bs";
+import { Route, Link} from "react-router-dom"
+import Restaurant from "./Restaurant";
 
 
 function FeedCard({data, onLike, like}){
@@ -24,6 +26,9 @@ function FeedCard({data, onLike, like}){
             break;
         }
     }
+
+
+
 
     function handleLike(){
         setIsLiked(!isLiked)
@@ -54,24 +59,29 @@ function FeedCard({data, onLike, like}){
     }
     return(
         <>
+        
             <div className="card" value={like}>
                 <img  src={photos[0]}/>
                 <div className="container">
                     <h2><b>{name}</b></h2>
-                    <p  className={"flex-box alighn-between"}><span>{cuisine}</span><span>📍{location}</span></p>
+                    <p  className={"flex-box align-between"}><span>{cuisine}</span><span>📍{location}</span></p>
                     <p>{avergaPrice()}</p>
-                    <p className={"flex-box align-between"}>
+                    <div className={"flex-box align-between"}>
                         <div>
                             <span>
                                 {isLiked ? <BsFillHeartFill onClick={handleDislike} className="m-5" style={{ color: 'red', size: '50px' }}/>
-                                : <BsHeart onClick={handleLike} className="m-5"/>}</span>
+                                : <BsHeart onClick={handleLike} className="m-5"/>}
+                            </span>
                             <BsChat className="m-5"/>
                         </div>
-                        <button style={{textAlign: "end"}}>View More</button>
-                    </p>
+                        <Link to={`restaurant/${id}`} style={{textAlign: "end"}}>View More</Link>
+                    </div>
                     <p>{numLikes} likes</p>
                 </div>
             </div>
+            <Route path={`/restaurant`} >
+            <Restaurant data={data}/>
+        </Route>
         </>
     )
 }

@@ -1,26 +1,31 @@
-import React, {useState, useEffect} from "react"
+
+import React, {useState} from "react"
 import "./css/Feed.css"
 import FeedCard from "./FeedCard"
+import NavBar from "./NavBar"
+import Filters from "./Filters"
 
-function Feed(){
-    const [feed, setFeed] = useState([])
-    useEffect(()=>{
-    fetch(`http://localhost:3000/restaurants`)
-    .then(res=>res.json())
-    .then(obj=>setFeed(obj))
-    },[])
+function Feed({feed}){
 
+    const [isSearch, setIsSearch] = useState(false)
+    function handleDisplaySearchMenu(){
+        setIsSearch(!isSearch)
+    }
     return(
+        <>
+        <NavBar onFilterPress={handleDisplaySearchMenu}/>
+        {isSearch ? <Filters data={feed}/> : null}
         <div className={"containerFeed"}>
             <div>
                 {
                     feed.map((post)=>{
-                        return <FeedCard data={post}/>
+                        return <FeedCard key={post.id} data={post}/>
                     })
                     
                 }
             </div>
         </div>
+        </>
     )
 }
 

@@ -7,3 +7,42 @@
 .item {
     width: 10em;
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #fff;
+  }
+
+  li{
+    float: left
+  }
+
+  .align-left{
+    float: left
+  }
+
+  .align-right{
+    float: right
+  }
+  .filter-container{
+    height: 100vh;
+    background-color: #fff;
+    transition: width 2s, height 4s;
+  }
+
+  .text-center{
+    text-align: center;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+
+  }
+
+  .item1 {
+    grid-column: 1 / span 2;
+  }
+  
