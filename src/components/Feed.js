@@ -4,15 +4,14 @@ import FeedCard from "./FeedCard"
 
 function Feed(){
     const [feed, setFeed] = useState([])
-
     useEffect(()=>{
     fetch(`http://localhost:3000/restaurants`)
     .then(res=>res.json())
     .then(obj=>setFeed(obj))
     },[])
-    
+
     return(
-        <div>
+        <div className={"containerFeed"}>
             <div>
                 {
                     feed.map((post)=>{
