@@ -4,66 +4,46 @@ import "./css/Feed.css"
 import FeedCard from "./FeedCard"
 import NavBar from "./NavBar"
 import Filters from "./Filters"
+import { useEffect } from "react"
 
-function Feed({ feed }){
+function Feed(){
 
+    const [data,setData] = useState([])
+    const [feed, setFeed] = useState([])
+
+    useEffect(()=>{
+    fetch(`http://localhost:3000/restaurants`)
+    .then(res=>res.json())
+    .then(obj=>setData(obj))
+    },[])
+
+    useEffect(()=>{
+        setFeed(data)
+    },[data])
+
+
+
+    console.log()
     const [isSearch, setIsSearch] = useState(false)
-    const [fil, setFilter] = useState("")
     function handleDisplaySearchMenu(){
         setIsSearch(!isSearch)
     }
 
-    function handleApply(formData){
-        setFilter(formData)
-        setIsSearch(!isSearch)
-        const keyss = Object.keys(formData)
-        let areas = []
-        let prices = keyss.filter((item)=>{
-            console.log(typeof item)
-        })
-        prices.sort((a,b)=>{
-            if (a > b) return 1
-            else return -1
-        })
-        console.log(prices[0])
-        
-        // function highestPrice() {
-        //     for(let i = 0; i < prices.length-1; i++){
-        //         if(prices[i] > prices[i+1]){
-        //             console.log( prices[i])
-        //         }else{
-        //             console.log( prices[i+1])
-        //         }
-        //     }
-        // }
-        // highestPrice()
+    function setAreas(obj){
+        setFeed(obj)
     }
-    const feedFilter = feed.filter((item)=>{
-        if(fil == ""){
-            return feed
-        }else{
-            switch(true){
-                case item.cuisine == fil.cuisine:
-                    return item
-                    break
-                // case item.area.includes():
-                //     return 
-            }
-        }
-    })
 
 
 
-
-    
     return(
         <>
         <NavBar onFilterPress={handleDisplaySearchMenu}/>
-        {isSearch ? <Filters data={feed} handleApply={handleApply}/> : null}
+        {isSearch ? <Filters data={data} 
+                       handleAreas={setAreas} /> : null}
         <div className={"containerFeed"}>
             <div>
                 {
-                    feedFilter.map((post)=>{
+                    feed.map((post)=>{
                         return <FeedCard key={post.id} data={post}/>
                     })
                     

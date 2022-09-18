@@ -1,30 +1,49 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import Restaurant from "./Restaurant";
 
-function Filters({data, handleApply}){
-    const [formData, setFormData] = useState({})
-    
-    function handleChangeCuisine(event){
-        const name = event.target.name
-        const value = event.target.value
-
-        setFormData({...formData,
-            cuisine: value 
-        })
-        
-    }
+function Filters({data, handleCuisine, handleAreas}){
+    const [formData, setFormData] = useState([])
+    const [cuisineData, setCuisineData] = useState([])
+    const [checked, setChecked] = useState([])
+    const [display, setDisplay] = useState([])
 
     function handleCheckBox(event){
         const name = event.target.name
-        const value = event.target.value
-
-        setFormData({...formData,
-        [name]: value})
+        const checked = event.target.checked
+        let newList 
+       
+        if(checked === true){
+            setFormData([...formData, name])
+        }else if(checked === false){
+            newList = formData.filter((item)=>{
+                if(name != item) return item;
+            }
+            )
+            setFormData(newList)
+        }
     }
-    console.log(formData)
 
-    function onApply(){
-        handleApply(formData)
-    }
+
+
+
+        useEffect(()=>{
+            const area = Object.values(formData)
+            let newDisplay = []
+            data.filter((restaurant)=>{
+                return area.filter((item)=>{
+                    if(restaurant.area === item) return newDisplay = [...newDisplay, restaurant]
+                })
+            })
+            handleAreas(newDisplay)
+            
+        }, [formData])
+
+
+  
+
+
+
+    
 
 
     let cuisines = data.map((item)=>{
@@ -45,8 +64,8 @@ function Filters({data, handleApply}){
         <div className="filter-container">
             <h3 className="text-center">Cuisine:</h3>
             <div className="flex-box align-center">
-                <select defaultValue={"hello"} onChange={handleChangeCuisine}>
-                    <option value="" >I don't mind</option>
+                <select onChange={handleCuisine}>
+                    <option value={"I don't mind"} >I don't mind</option>
                     {filteredCuisines.map((item)=>{
                         return <option name={"cuisine"} value={item}>{item}</option>
                     })}
@@ -61,17 +80,8 @@ function Filters({data, handleApply}){
                     })}
                 </div>
             </div>
-            <h3 className="text-center">Price:</h3>
             <div className="flex-box align-center">
-                <div className="grid-container">
-                   <div><input type="checkbox" name={30} onClick={handleCheckBox}/><label >€</label></div>
-                   <div><input type="checkbox" name={60} onClick={handleCheckBox}/><label >€€</label></div>
-                   <div><input type="checkbox" name={90} onClick={handleCheckBox}/><label >€€€</label></div>
-                   <div><input type="checkbox" name={120} onClick={handleCheckBox}/><label >€€€€</label></div>
-                </div>
-            </div>
-            <div className="flex-box align-center">
-                <button onClick={onApply}>APPLY</button>
+                <button >APPLY</button>
             </div>
         </div>
     )
