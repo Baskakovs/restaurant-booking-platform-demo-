@@ -72,6 +72,7 @@ function Filters({data, handleCuisine, handleAreas, setCuisine}){
                     })}
                 </div>
             </div>
+
         </div>
     )
 }

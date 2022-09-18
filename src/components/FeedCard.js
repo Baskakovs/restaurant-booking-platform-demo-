@@ -7,7 +7,7 @@ import Restaurant from "./Restaurant";
 
 function FeedCard({data, onLike, like}){
 
-    const {id, name, photos, location, avg_price, cuisine, likes} = data
+    const {id, name, photos, location, avg_price, cuisine, likes, area} = data
     const [isLiked, setIsLiked] = useState(false)
     const [numLikes, setNumLikes] = useState(likes)
     const avergaPrice = ()=>{
@@ -64,7 +64,7 @@ function FeedCard({data, onLike, like}){
                 <img  src={photos[0]}/>
                 <div className="container">
                     <h2><b>{name}</b></h2>
-                    <p  className={"flex-box align-between"}><span>{cuisine}</span><span>📍{location}</span></p>
+                    <p  className={"flex-box align-between"}><span>{cuisine}</span><span>📍{area}</span></p>
                     <p>{avergaPrice()}</p>
                     <div className={"flex-box align-between"}>
                         <div>

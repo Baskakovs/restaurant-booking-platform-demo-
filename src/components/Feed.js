@@ -19,11 +19,6 @@ function Feed(){
     .then(obj=>setData(obj))
     },[])
 
-    useEffect(()=>{
-        setFeed(data)
-    },[data])
-
-
 
     console.log()
     const [isSearch, setIsSearch] = useState(false)
@@ -34,18 +29,7 @@ function Feed(){
     function setArea(obj){
         setAreas(obj)
     }
-
-
     
-    // function setCuisines(value){
-    //     let newDisplay = []
-    //     display.filter((item)=>{
-    //         if(item.cuisine == value) return newDisplay = [...newDisplay, item]
-    //     })
-    //     display = newDisplay
-    //     console.log(newDisplay)
-    // }
-
     function setCuisines(value){
         setCuisine(value)
     }

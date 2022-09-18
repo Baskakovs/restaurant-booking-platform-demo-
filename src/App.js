@@ -4,20 +4,20 @@ import Feed from "./components/Feed"
 import Restaurant from "./components/Restaurant.js"
 import {Switch, Route} from "react-router-dom"
 import React, {useEffect, useState} from 'react';
+import "./components/css/google.css"
+
 
 function App() {
-  
-  
-
 
   return (
     <>
+    
     <Switch>
-      <Route exact path="/">
-        <Feed/>
+      <Route  exact path="/">
+      <Feed/>
       </Route>
       <Route path="/restaurant">
-          <Restaurant />
+          <Restaurant/>
       </Route>
     </Switch>
     </>
