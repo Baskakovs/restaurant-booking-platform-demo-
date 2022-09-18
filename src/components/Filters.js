@@ -1,6 +1,31 @@
-import React from "react";
+import React, {useState} from "react";
 
-function Filters({data}){
+function Filters({data, handleApply}){
+    const [formData, setFormData] = useState({})
+    
+    function handleChangeCuisine(event){
+        const name = event.target.name
+        const value = event.target.value
+
+        setFormData({...formData,
+            cuisine: value 
+        })
+        
+    }
+
+    function handleCheckBox(event){
+        const name = event.target.name
+        const value = event.target.value
+
+        setFormData({...formData,
+        [name]: value})
+    }
+    console.log(formData)
+
+    function onApply(){
+        handleApply(formData)
+    }
+
 
     let cuisines = data.map((item)=>{
         return item.cuisine
@@ -16,21 +41,14 @@ function Filters({data}){
         return areas.indexOf(item) == pos;
     })
 
-
-
-    console.log(filteredAreas)
-
-
-
-
     return(
         <div className="filter-container">
             <h3 className="text-center">Cuisine:</h3>
             <div className="flex-box align-center">
-                <select defaultValue={"hello"}>
+                <select defaultValue={"hello"} onChange={handleChangeCuisine}>
                     <option value="" >I don't mind</option>
                     {filteredCuisines.map((item)=>{
-                        return <option value={item}>{item}</option>
+                        return <option name={"cuisine"} value={item}>{item}</option>
                     })}
                 </select>
             </div>
@@ -39,18 +57,21 @@ function Filters({data}){
             <div className="flex-box align-center">
                 <div className="grid-container">
                     {filteredAreas.map((item)=>{
-                        return <div className="col-item"><input type="checkbox" name="" id=""/> <label >{item}</label></div>
+                        return <div className="col-item"><input type="checkbox" name={item} onClick={handleCheckBox}/> <label >{item}</label></div>
                     })}
                 </div>
             </div>
             <h3 className="text-center">Price:</h3>
             <div className="flex-box align-center">
                 <div className="grid-container">
-                   <div><input type="checkbox" name="" id=""/><label >€</label></div>
-                   <div><input type="checkbox" name="" id=""/><label >€€</label></div>
-                   <div><input type="checkbox" name="" id=""/><label >€€€</label></div>
-                   <div><input type="checkbox" name="" id=""/><label >€€€€</label></div>
+                   <div><input type="checkbox" name={30} onClick={handleCheckBox}/><label >€</label></div>
+                   <div><input type="checkbox" name={60} onClick={handleCheckBox}/><label >€€</label></div>
+                   <div><input type="checkbox" name={90} onClick={handleCheckBox}/><label >€€€</label></div>
+                   <div><input type="checkbox" name={120} onClick={handleCheckBox}/><label >€€€€</label></div>
                 </div>
+            </div>
+            <div className="flex-box align-center">
+                <button onClick={onApply}>APPLY</button>
             </div>
         </div>
     )

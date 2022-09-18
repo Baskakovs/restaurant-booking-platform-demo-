@@ -7,21 +7,24 @@ import React, {useEffect, useState} from 'react';
 
 function App() {
   const [feed, setFeed] = useState([])
+  const [data,setData] = useState([])
   useEffect(()=>{
   fetch(`http://localhost:3000/restaurants`)
   .then(res=>res.json())
-  .then(obj=>setFeed(obj))
+  .then(obj=>setData(obj))
   },[])
+
+
 
   
   return (
     <>
     <Switch>
       <Route exact path="/">
-        <Feed feed={feed}/>
+        <Feed feed={data}/>
       </Route>
       <Route path="/restaurant">
-          <Restaurant feed={feed}/>
+          <Restaurant data={data}/>
       </Route>
     </Switch>
     </>
