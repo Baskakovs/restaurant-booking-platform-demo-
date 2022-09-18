@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from "react";
 import Restaurant from "./Restaurant";
 
-function Filters({data, handleCuisine, handleAreas}){
+function Filters({data, handleCuisine, handleAreas, setCuisine}){
     const [formData, setFormData] = useState([])
     const [cuisineData, setCuisineData] = useState([])
-    const [checked, setChecked] = useState([])
-    const [display, setDisplay] = useState([])
 
     function handleCheckBox(event){
         const name = event.target.name
@@ -23,28 +21,22 @@ function Filters({data, handleCuisine, handleAreas}){
         }
     }
 
-
-
-
-        useEffect(()=>{
-            const area = Object.values(formData)
-            let newDisplay = []
-            data.filter((restaurant)=>{
-                return area.filter((item)=>{
-                    if(restaurant.area === item) return newDisplay = [...newDisplay, restaurant]
-                })
+    useEffect(()=>{
+        const area = Object.values(formData)
+        let newDisplay = []
+        data.filter((restaurant)=>{
+            return area.filter((item)=>{
+                if(restaurant.area === item) return newDisplay = [...newDisplay, restaurant]
             })
-            handleAreas(newDisplay)
-            
-        }, [formData])
+        })
+        handleAreas(area)
+        
+    }, [formData])
 
-
-  
-
-
-
-    
-
+    function handleCuisine(event){
+        const value = event.target.value
+        setCuisine(value)
+    }
 
     let cuisines = data.map((item)=>{
         return item.cuisine
@@ -79,9 +71,6 @@ function Filters({data, handleCuisine, handleAreas}){
                         return <div className="col-item"><input type="checkbox" name={item} onClick={handleCheckBox}/> <label >{item}</label></div>
                     })}
                 </div>
-            </div>
-            <div className="flex-box align-center">
-                <button >APPLY</button>
             </div>
         </div>
     )
