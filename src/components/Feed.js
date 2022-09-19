@@ -10,7 +10,7 @@ function Feed(){
 
     const [data,setData] = useState([])
     const [feed, setFeed] = useState([])
-    const [cuisine, setCuisine] = useState("")
+    const [cuisines, setCuisine] = useState("")
     const [areas, setAreas] = useState("")
 
     useEffect(()=>{
@@ -20,7 +20,7 @@ function Feed(){
     },[])
 
 
-    console.log()
+
     const [isSearch, setIsSearch] = useState(false)
     function handleDisplaySearchMenu(){
         setIsSearch(!isSearch)
@@ -30,34 +30,36 @@ function Feed(){
         setAreas(obj)
     }
     
-    function setCuisines(value){
-        setCuisine(value)
+    function setCuisines(array){
+        setCuisine(array)
     }
-    console.log(`Cuisine: ${cuisine}; Areas: ${areas}`)
+   
 
     const display = data.filter((item)=>{
         let newDisplay = []
-       if(areas == "" && cuisine == ""){
+       if(areas == "" && cuisines == ""){
         return item
-       } else if(areas == "" && cuisine != ""){
-            if(item.cuisine == cuisine) return newDisplay = [...newDisplay, item]  
-       }else if(areas != "" && cuisine == ""){
+       } else if(areas == "" && cuisines != ""){
+            for (let cuisine of cuisines){if(cuisine == item.cuisine)return item} 
+       }else if(areas != "" && cuisines == ""){
             for (let area of areas){if(area == item.area)return item}
-        }else if(areas != "" && cuisine != ""){
+        }else if(areas != "" && cuisines != ""){
             for (let area of areas){
-                if(area == item.area && cuisine == item.cuisine){
-                     return item
+                for(let cuisine of cuisines){
+                    if(area == item.area && cuisine == item.cuisine){
+                        return item
+                    }
                 }
             }
         }
     })
-    console.log("display",display)
+
     return(
         <>
         <NavBar onFilterPress={handleDisplaySearchMenu}/>
         {isSearch ? <Filters data={data} 
                        handleAreas={setArea} 
-                       setCuisine={setCuisines}/> : null}
+                       handleCuisine={setCuisines}/> : null}
         <div className={"containerFeed"}>
             <div>
                 {

@@ -72,11 +72,10 @@ function FeedCard({data, onLike, like}){
                                 {isLiked ? <BsFillHeartFill onClick={handleDislike} className="m-5" style={{ color: 'red', size: '50px' }}/>
                                 : <BsHeart onClick={handleLike} className="m-5"/>}
                             </span>
-                            <BsChat className="m-5"/>
+                            <span>{numLikes} likes</span>
                         </div>
                         <Link to={`restaurant/${id}`} style={{textAlign: "end"}}>View More</Link>
                     </div>
-                    <p>{numLikes} likes</p>
                 </div>
             </div>
             <Route path={`/restaurant`} >

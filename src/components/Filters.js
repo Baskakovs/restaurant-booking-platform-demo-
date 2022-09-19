@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import Restaurant from "./Restaurant";
 
-function Filters({data, handleCuisine, handleAreas, setCuisine}){
+function Filters({data, handleAreas, handleCuisine}){
     const [formData, setFormData] = useState([])
     const [cuisineData, setCuisineData] = useState([])
 
@@ -21,22 +21,31 @@ function Filters({data, handleCuisine, handleAreas, setCuisine}){
         }
     }
 
+    function handleCuisineCheck(event){
+        const name = event.target.name
+        const checked = event.target.checked
+        let newList 
+
+       
+        if(checked === true){
+            setCuisineData([...cuisineData, name])
+        }else if(checked === false){
+            newList = cuisineData.filter((item)=>{
+                if(name != item) return item;
+            }
+            )
+            setCuisineData(newList)
+        }
+    }
+
     useEffect(()=>{
         const area = Object.values(formData)
-        let newDisplay = []
-        data.filter((restaurant)=>{
-            return area.filter((item)=>{
-                if(restaurant.area === item) return newDisplay = [...newDisplay, restaurant]
-            })
-        })
-        handleAreas(area)
-        
-    }, [formData])
 
-    function handleCuisine(event){
-        const value = event.target.value
-        setCuisine(value)
-    }
+        handleAreas(area)
+        handleCuisine(cuisineData)
+        
+    }, [formData, cuisineData])
+
 
     let cuisines = data.map((item)=>{
         return item.cuisine
@@ -56,12 +65,11 @@ function Filters({data, handleCuisine, handleAreas, setCuisine}){
         <div className="filter-container">
             <h3 className="text-center">Cuisine:</h3>
             <div className="flex-box align-center">
-                <select onChange={handleCuisine}>
-                    <option value={"I don't mind"} >I don't mind</option>
+                <div className="grid-container">
                     {filteredCuisines.map((item)=>{
-                        return <option name={"cuisine"} value={item}>{item}</option>
+                        return <div className="col-item"><input type="checkbox" name={item} onClick={handleCuisineCheck}/> <label >{item}</label></div>
                     })}
-                </select>
+                </div>
             </div>
 
             <h3 className="text-center">Area:</h3>

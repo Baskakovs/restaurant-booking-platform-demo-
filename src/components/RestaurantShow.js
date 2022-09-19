@@ -21,7 +21,8 @@ function RestaurantShow(){
 
 
     const {id, name, cuisine, location, area, comments, description, avg_price, photos} = data
-
+   
+   
     const history = useHistory()
 
     function goBack(){
@@ -47,6 +48,11 @@ function RestaurantShow(){
 
     let gallery = [photos]
 
+    console.log(location)
+
+
+
+
     return(
         <>
         <div>
@@ -68,7 +74,7 @@ function RestaurantShow(){
             
         </div >
 
-        <Map style={{height: "10000px"}} location={location}/>
+            <Map style={{height: "10000px"}} location={location}/>
         </>
         
     )
