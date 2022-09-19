@@ -1,8 +1,12 @@
 .containerFeed {
-    height: 200px;
-    display: flex;
-    justify-content: center;
+
+
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 380px
 }
+
 
 .item {
     width: 10em;
@@ -28,9 +32,11 @@ ul {
     float: right
   }
   .filter-container{
+    margin-top: 50px;
     height: 100vh;
     background-color: #fff;
     transition: width 2s, height 4s;
+    
   }
 
   .text-center{
@@ -39,7 +45,9 @@ ul {
   .grid-container {
     display: grid;
     grid-template-columns: auto auto;
-
+    width: 100%;
+    justify-content: space-evenly;
+    
   }
 
   .item1 {

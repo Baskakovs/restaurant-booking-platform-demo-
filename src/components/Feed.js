@@ -57,9 +57,13 @@ function Feed(){
     return(
         <>
         <NavBar onFilterPress={handleDisplaySearchMenu}/>
-        {isSearch ? <Filters data={data} 
-                       handleAreas={setArea} 
-                       handleCuisine={setCuisines}/> : null}
+        {isSearch ? 
+        <div className="filter-container " >
+                        <Filters data={data} 
+                        handleAreas={setArea} 
+                        handleCuisine={setCuisines}/>
+        </div> 
+        :
         <div className={"containerFeed"}>
             <div>
                 {
@@ -70,6 +74,7 @@ function Feed(){
                 }
             </div>
         </div>
+        }       
         </>
     )
 }

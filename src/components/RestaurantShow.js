@@ -46,31 +46,21 @@ function RestaurantShow(){
         }
     }
 
-    let gallery = [photos]
-
-    console.log(location)
-
-
-
 
     return(
         <>
         <div>
             <button className={"back-button"} onClick={goBack}><IoMdArrowBack className={"back-arrow"}/><span className="text">Back</span></button>
-            <Slide>
-                {gallery.map((photo)=>{
-                    return <div className="each-slide-effect">
-                                <img src={photo} />
-                            </div>  
-                })
-                } 
-            </Slide>
+
+            <img src={photos}/>
             <div className="flex-box align-center">
-                <span>{area} | {cuisine} | {avergaPrice()}</span>
+                <><span className="text-light">{area} | {cuisine} | {avergaPrice()}</span></>
             </div>
-            <h2 className="text">{name}</h2>
-            <span>Menu (PDF)</span>
-            <p>{description}</p>
+            <div className="px-1">
+                <h2 className="title">{name}</h2>
+                <span>Menu (PDF)</span>
+                <p>{description}</p>
+            </div>
             
         </div >
 

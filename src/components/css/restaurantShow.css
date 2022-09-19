@@ -27,9 +27,14 @@
     z-index: 2;
   }
 
-  .back-button .text{
+  .back-button .title{
     transform: translateY(1000px);
     font-size: 18px;
+  }
+
+  .title{
+    margin-top: 12px;
+    margin-bottom: 10px;
   }
   
   .right {
@@ -40,4 +45,13 @@
   .back-arrow{
     font-size: 28px;
     transform: translateY(8px);
+  }
+
+  .px-1{
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .text-light{
+    color: rgba(0,0,0,0.6)
   }

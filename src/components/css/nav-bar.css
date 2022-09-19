@@ -1,0 +1,35 @@
+.logo-text{
+  font-family: Baskerville;
+  font-size: 22px;
+  padding-left: 15px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.filter-symbol{
+    padding-top:  8px;
+    padding-right: 10px;
+    position: relative;
+   
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  .nav-bar{
+    box-shadow: 2px 2px 3px 0.5px rgba(0, 0, 0, 0.1);
+    background-color: antiquewhite;
+  }
+
+  .filter-symbol > label{
+
+    font-size: 11px;
+    position: absolute;
+    top: 3px;
+    right: 12px;
+    color: rgba(0, 0, 0, 0.4);
+    font-weight: 80;
+  }

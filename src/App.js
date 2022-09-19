@@ -2,6 +2,7 @@
 import './App.css';
 import Feed from "./components/Feed"
 import Restaurant from "./components/Restaurant.js"
+import Home from './components/Home';
 import {Switch, Route} from "react-router-dom"
 import React, {useEffect, useState} from 'react';
 import "./components/css/google.css"
@@ -14,7 +15,10 @@ function App() {
     
     <Switch>
       <Route  exact path="/">
-      <Feed/>
+        <Home/>
+      </Route>
+      <Route  exact path="/feed">
+        <Feed/>
       </Route>
       <Route path="/restaurant">
           <Restaurant/>

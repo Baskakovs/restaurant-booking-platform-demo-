@@ -3,9 +3,10 @@ import "./css/FeedCard.css"
 import { BsHeart, BsChat, BsFillHeartFill } from "react-icons/bs";
 import { Route, Link} from "react-router-dom"
 import Restaurant from "./Restaurant";
+import { Button } from "semantic-ui-react";
 
 
-function FeedCard({data, onLike, like}){
+function FeedCard({data, onLike, like }){
 
     const {id, name, photos, location, avg_price, cuisine, likes, area} = data
     const [isLiked, setIsLiked] = useState(false)
@@ -60,21 +61,22 @@ function FeedCard({data, onLike, like}){
     return(
         <>
         
+        
             <div className="card" value={like}>
-                <img  src={photos[0]}/>
-                <div className="container">
+                <div className="py-1 ps-1">📍{area}</div>
+                <img  src={photos}/>
+                <div className="container-card">
                     <h2><b>{name}</b></h2>
-                    <p  className={"flex-box align-between"}><span>{cuisine}</span><span>📍{area}</span></p>
-                    <p>{avergaPrice()}</p>
+                    <p  className={"flex-box align-between"}><span>{cuisine}</span><span>{avergaPrice()}</span></p>
                     <div className={"flex-box align-between"}>
-                        <div>
-                            <span>
-                                {isLiked ? <BsFillHeartFill onClick={handleDislike} className="m-5" style={{ color: 'red', size: '50px' }}/>
-                                : <BsHeart onClick={handleLike} className="m-5"/>}
+                        <div className=" heart">
+                            <span className="mb-1">
+                                {isLiked ? <BsFillHeartFill onClick={handleDislike} className="" style={{ color: 'red', size: '50px' }}/>
+                                : <BsHeart onClick={handleLike} className=""/>}
                             </span>
-                            <span>{numLikes} likes</span>
+                            <label className="heart-label ps-1">{numLikes} likes</label>
                         </div>
-                        <Link to={`restaurant/${id}`} style={{textAlign: "end"}}>View More</Link>
+                        <Link to={`restaurant/${id}`} style={{textAlign: "end"}}>{<button className="view-more-button mb-1" >View More</button>}</Link>
                     </div>
                 </div>
             </div>
