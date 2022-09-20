@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+![Image](./src/components/images/GIF.gif)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+EPICURE - Guide to London's best restaurants
+============================================
+--------------------------------------------
 
-## Available Scripts
+![Alt Text](./src/components/images/GIF.gif)
 
-In the project directory, you can run:
+ABOUT
+-----
 
-### `npm start`
+This React application allows you to filter through a list of restaurants in London based on cuisine and area. Additionally, you can give restaurants
+a like, read detailed descriptions and view their precise locations on Google Maps.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The application is powered using data found in *./json-server/db/db.json*
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+BLOG
+----
+[Link]https://medium.com/@pjotrbaskakov/creating-a-simple-navbar-filter-4462c3841f7b
 
-### `npm test`
+REFERENCES
+----------
+I used the following resources for this project:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Json-server to mimic server communication - [Link]https://github.com/learn-co-curriculum/json-server-template .
+2. Google Maps API.
+3. React Router to establish client-side routing.
+4. Images & Descriptions:
+    1. Luca: Image - [Link] https://guide.michelin.com/nl/nl/greater-london/london/restaurant/luca
+             Description - [Link] https://luca.restaurant/
+    2. BiBi: Image - [Link] https://thenudge.com/london-restaurants/bibi/
+             Description - [Link] https://www.bibirestaurants.com/
+    3. City Social: Image - [Link] https://www.opentable.co.th/city-social-restaurant
+    4. Bocca di Lupo: Image - [Link] https://www.harpersbazaar.com/uk/culture/going-out/a43952/bocca-di-lupo-soho/
+    5. Aquavit: Image - [Link] https://www.tripadvisor.nl/Restaurant_Review-g186338-d11576237-Reviews-Aquavit_London-London_England.html
+             Description - [Link] http://www.aquavitrestaurants.com/
+    6. Clove Club: Image - [Link] https://www.tripadvisor.be/LocationPhotoDirectLink-g186338-d4098078-i322181335-The_Clove_Club-London_England.html
+             Description - [Link] https://guide.michelin.com/en/greater-london/london/restaurant/the-clove-club
+    7. Sushi Tetsu: Image - [Link] https://secretldn.com/sushi-tetsu-tiny-sushi-restaurant/
+             Description - [Link] https://thenudge.com/london-restaurants/sushi-tetsu/
+    8. Imperial Treasure: Image - [Link] https://www.imperialtreasure.com/uk/restaurant/Imperial_Treasure_Fine_Chinese_Cuisine-1
+             Description - [Link] https://www.imperialtreasure.com/uk/restaurant/Imperial_Treasure_Fine_Chinese_Cuisine-1
+            
