@@ -30,7 +30,7 @@ I used the following resources for this project:
              Description - [Link] https://luca.restaurant/
     2. BiBi: Image - [Link] https://thenudge.com/london-restaurants/bibi/
              Description - [Link] https://www.bibirestaurants.com/
-    3. City Social: Image - [Link] https://www.opentable.co.th/city-social-restaurant
+    3. City Social: Image - https://www.opentable.co.th/city-social-restaurant
     4. Bocca di Lupo: Image - [Link] https://www.harpersbazaar.com/uk/culture/going-out/a43952/bocca-di-lupo-soho/
     5. Aquavit: Image - [Link] https://www.tripadvisor.nl/Restaurant_Review-g186338-d11576237-Reviews-Aquavit_London-London_England.html
              Description - [Link] http://www.aquavitrestaurants.com/
